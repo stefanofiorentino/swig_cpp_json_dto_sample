@@ -1,0 +1,5 @@
+.vscode/
+_ExampleModule.so
+build/
+example_wrap.cxx
+python/

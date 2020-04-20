@@ -1,103 +1,35 @@
-<!-- $size: 16:9 -->
-
-<style>
-.slide_inner
-{
-    height: 600px;
-}
-
-footer
-{
-    text-align: right;
-    width: 92%;
-    bottom: 10px !important;
-	left: 90px !important;
-}
-
-.points
-{
-    font-size: 115%;
-    margin-left: -40px;
-    margin-right: -40px;
-}
-
-.inline-link
-{
-    font-size: 50%;
-    margin-top: -2.6em;
-    margin-right: 10px;
-    text-align: right;
-    font-weight: bold;
-}
-
-.intxt
-{
-	font-size: 75%;
-    position: absolute;
-    top: -80px;
-    left: -65px;
-    color: grey;
-}
-
-.slide_page
-{
-	top: 0px;
-    right: 20px !important;
-}
-</style>
-
-<span style="font-size: 150%">
-
-<br>
-
-<center style="margin-top: -70px !important">
-
+---
+marp: true
+---
 # data transfer object by swig
-
-</center>
-
-<br>
-
-<div style="float: left; font-size: 70%">
-
 ## **Stefano Fiorentino**
 
 stefano.fiore84@gmail.com
 [@fiorentinoing](https://twitter.com/fiorentinoing)
-
-</div>
-
-<div style="float: right; font-size: 70%; text-align: right; margin-top: -0px !important">
 
 ## swig by example
 
 09/10/2018
 Milan, IT
 
-</div>
-
-</span>
-
 ---
-
+<!-- theme: gaia -->
 <!-- page_number: true -->
-<!-- footer: stefanofiorentino.it | stefano.fiore84@gmail.com | @fiorentinoing -->
+<!-- footer: stefanofiorentino.it | stefano.fiore84@gmail.com | [@fiorentinoing](https://twitter.com/fiorentinoing) -->
 
 # Introduction
+
 ## what is this talk about?
 
-<div class="points">
 
 * export a Modern C++ data-transfer object to several languages 
 	* python will be used as example
 
-</div>
-
 ---
 
 # Introduction
 
-<div class="points">
+
 
 * typing the following code inside a python REPL console
 
@@ -112,14 +44,11 @@ print example("{\"id\":\"foo\"}").toJsonString();
   "id" : "foo"
 }
 ```
-<div align="right">REPL = Read-Eval Print Loop</div>
-</div>
+REPL = Read-Eval Print Loop
 
 ---
 
 # Utility function
-
-<div class="points">
 
 * typing the following code inside a python REPL console
 
@@ -138,13 +67,11 @@ inline Json::Value fromStringtoJsonValue(std::string const &in)
     return root;
 }
 ```
-</div>
 
 ---
 
 # example class: c'tors
 
-<div class="points">
 
 ```cpp
 #include "util/bean.hpp"
@@ -165,13 +92,10 @@ public:
 };
 ```
 
-</div>
-
 ---
 
 # example class: serializer
 
-<div class="points">
 
 ```cpp
 class example
@@ -192,13 +116,11 @@ class example
 };
 ```
 
-</div>
 
 ---
 
 # swig interface file
 
-<div class="points">
 
 ```swig
 /* example.i */
@@ -211,14 +133,12 @@ class example
 %include "stl.i"
 %include "example.hpp"
 ```
-<div align="right">SWIG = Simplified Wrapper and Interface Generator</div>
-</div>
+SWIG = Simplified Wrapper and Interface Generator
 
 ---
 
 # clean.sh
 
-<div class="points">
 
 ```bash
 rm -rf ./build
@@ -228,13 +148,10 @@ rm -f ./*.so
 rm -f ./*.o
 ```
 
-</div>
-
 ---
 
 # swig.python.sh
 
-<div class="points">
 
 ```bash
 mkdir -p python
@@ -242,13 +159,11 @@ swig -python -c++ -outdir python example.i
 
 ```
 
-</div>
-
 ---
 
 # make.python.sh
 
-<div class="points">
+
 
 ```bash
 rm -rf build && mkdir -p build && cd build
@@ -262,13 +177,11 @@ cd ../
 
 ```
 
-</div>
 
 ---
 
 # launch.python.sh
 
-<div class="points">
 
 ```bash
 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjsoncpp.so \
@@ -279,13 +192,9 @@ print example("{\"id\":\"foo\"}").toJsonString();'
 
 ```
 
-</div>
-
 ---
 
 <!-- page_number: false  -->
-
-<center style="zoom:80%; font-size: 50px">
 
 # Thanks!
 
@@ -295,10 +204,4 @@ stefano.fiore84@gmail.com
 
 [@fiorentinoing](https://twitter.com/fiorentinoing)
 
-<small>
-
 https://github.com/stefanofiorentino/swig_cpp_json_dto_sample
-
-</small>
-
-</center>
